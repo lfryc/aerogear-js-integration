@@ -22,7 +22,7 @@ fi
 git clone https://github.com/danbev/netty.git
 cd netty
 git checkout tags/ci
-mvn install -DskipTests=true
+mvn --quiet install -DskipTests=true
 
 if [ -d "$SPS_PATH" ]; then
     rm -rf $SPS_PATH/
@@ -32,7 +32,7 @@ cd $BASE_DIR
 git clone https://github.com/aerogear/aerogear-simplepush-server.git SPS
 cp -rf ../../aerogear-simplepush-server/ SPS
 cd SPS
-mvn install -DskipTests=true
+mvn --quiet install -DskipTests=true
 cd server-netty
 
 mvn exec:java -Dexec.args="-host=localhost -port=7777 -tls=false -ack_interval=10000 -useragent_reaper_timeout=60000 -token_key=SimplePushTest" &
